@@ -1,0 +1,10 @@
+|RT|RT|  |ET|RT|RT|RT|RT|  |  |
+|  |GT|  |  |GT|  |  |  |  |  |
+|  |GT|  |GT|GT|  |  |  |  |  |
+|ST|GT|GT|  |GT|  |  |  |  |  |
+|GT|  |GT|  |GT|  |  |  |  |  |
+|  |  |GT|GT|GT|  |  |  |  |ET|
+|  |  |  |GT|  |  |  |  |GT|GT|
+|  |  |  |GT|  |  |  |  |GT|  |
+|  |  |  |GT|  |  |  |  |GT|  |
+|BT|BT|BT|BT|BT|BT|BT|BT|BT|BT|
