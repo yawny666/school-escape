@@ -1,8 +1,10 @@
-# TO DO:
-# make starting classes of players
-# XP for killing/fighting
-# str points for inventory
-# attack with fists and do weak dmg
+'''SchoolEscape RPG
+By John Berliner
+PARTIAL TO DO:
+- make starting classes of players
+- XP for killing/fighting
+- str points for inventory
+'''
 
 import os
 import time
