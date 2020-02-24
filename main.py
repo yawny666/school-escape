@@ -1,9 +1,9 @@
 '''
 SchoolEscape RPG
-TO DO:
-make starting classes of players
-XP for killing/fighting
-str points for inventory
+PARTIAL TO DO:
+have starting classes of players with different allocation of points
+leveling up/XP for killing/fighting
+str points for inventory/carrying
 '''
 
 import os
