@@ -216,17 +216,17 @@ class Player:
             dmg = randint(0,3 + self.dmg_bonus)
             self.health -= 1
             enemy.health = max(0, enemy.health - dmg)
-            msg = "With no weapons equipped, you try to punch the " + enemy.name
+            msg = "You try to punch the " + enemy.name
             msg += " with your fists, doing "+ str(dmg) + " damage! **\n"
             msg += "The " + enemy.name + " has " + str(enemy.health) + " HP left."
             print(Fore.GREEN + Style.BRIGHT + msg) 
-        elif self.weapon.condition <= 0:
-            dmg = 0
-            self.weapon.value = 0
-            if self.weapon.name.count("broken") == 0:
-                self.weapon.name += " (broken)"
-            print("Your stupid weapon is broken! It does nothing!")
-            print("If you want to fight with your fists, drop your weapon!")
+        # this section should never execute
+        #elif self.weapon.condition <= 0:
+        #    dmg = 0
+        #    self.weapon.value = 0
+        #    if not self.weapon.name.endswith("broken"):
+        #        self.weapon.name += " (broken)"
+        #    print("Your stupid weapon is broken! It does nothing!")
         else:
             dmg = randint(0, (self.weapon.damage + self.dmg_bonus))
             enemy.health = max(0, enemy.health - dmg)
@@ -240,7 +240,9 @@ class Player:
                 if self.weapon.name.count("broken") == 0:
                     self.weapon.name += " (broken)"
                     self.weapon.value = 0
-                print("Your stupid weapon broke! It's useless now!")
+                print("Your stupid weapon broke! It's useless now! Equip a weapon, or rely on your fists!")
+                self.weapons.append(self.weapon)
+                self.weapon = None
         if not enemy.is_alive():
             print("You killed the {}!".format(enemy.name))
             self.xp += enemy.xp

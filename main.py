@@ -110,7 +110,10 @@ def update_high_scores(player,score):
     print(f'{Fore.GREEN}****************************')
     for num,name in high_scores:
         displayname = name.upper() + "                "
-        print(displayname[:18] + '\t' + str(num))
+        if num == score and player == name:
+       	    print(f'{Fore.YELLOW}{displayname[:18]}\t{num}')
+        else:
+            print(displayname[:18] + '\t' + str(num))
 
 
 def play():
