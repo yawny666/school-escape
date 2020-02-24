@@ -1,9 +1,11 @@
 '''
 SchoolEscape RPG
+by John Berliner
 PARTIAL TO DO:
-have starting classes of players with different allocation of points
-leveling up/XP for killing/fighting
-str points for inventory/carrying
+flesh out starting classes of players with different allocation of points
+leveling up/XP system for killing/fighting/trading/talking/etc
+	higher xp or level -> stronger hits
+str points for inventory/carrying capacity
 '''
 
 import os
