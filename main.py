@@ -1,9 +1,9 @@
-'''SchoolEscape RPG
-By John Berliner
+'''
+SchoolEscape RPG
 PARTIAL TO DO:
-- make starting classes of players
-- XP for killing/fighting
-- str points for inventory
+have starting classes of players with different allocation of points
+leveling up/XP for killing/fighting
+str points for inventory/carrying
 '''
 
 import os
