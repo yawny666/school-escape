@@ -4,9 +4,9 @@ from colorama import Fore, Style, init
 import enemies
 import items
 import npcs
+import config
 
 init(autoreset=True)
-
 
 class MapTile:
     def __init__(self, x, y):
@@ -17,26 +17,27 @@ class MapTile:
 
         # environmental hazards here
         # gas 
-        global gas_placed
+        #global gas_placed
         self.gas = None 
-        if gas_placed == 0:
+        if config.gas_placed == 0:
             if randint(0, 30) == 1:
                 self.gas = 1 
-                gas_placed = 1
+                config.gas_placed = 1
 
         # shitic
-        global fartsmell_placed
         self.fartsmell = None 
-        if fartsmell_placed == 0:
+        if config.fartsmell_placed == 0:
             if randint(0, 30) == 1:
                 self.fartsmell = 1 
-                fartsmell_placed = 1
+                config.fartsmell_placed = 1
 
 
         #enemy generation; only one per tile
+        #global headmaser_placed
         r = randint(0,100)
-        if r < 5:
+        if r < 5 and not config.headmaster_placed:
             self.enemy = enemies.Headmaster()
+            config.headmaster_placed = 1
         elif r < 10:
             self.enemy = enemies.Chupacabra()
         elif r < 20:
@@ -47,13 +48,15 @@ class MapTile:
             self.enemy = enemies.Bully()
         elif r < 60:
             self.enemy = enemies.Scrub()
+        elif r < 65:
+            self.enemy = enemies.Janitor()
         if self.has_enemy():
             #25% chance of automatic aggro
             self.enemy.is_aggro = 1 if (randint(0,4) == 1) else None
 
         #trader generation
-        global trader_placed
-        if trader_placed == 0:
+        #global trader_placed
+        if config.trader_placed == 0:
             #uncomment these two lines to put a trader in starting tile
 #            if isinstance(self, StartTile):
 #                self.npc = npcs.Trader("Arthur", "wily little schemer")
@@ -61,12 +64,12 @@ class MapTile:
             r = randint(0,40) 
             if r == 0:
                 self.npc = npcs.Trader("Arthur","wily little schemer")
-                trader_placed = 1
+                config.trader_placed = 1
                 # for debugging only 
                 # print("trader at",self.x,self.y)
             elif r == 1:
                 self.npc = npcs.Trader("Tristan","twirling fairy prince with pretty lace stockings")
-                trader_placed = 1
+                config.trader_placed = 1
 
         #random NPCs 
         r = randint(0, 40)
@@ -256,11 +259,6 @@ tile_type_dict = {
 	"  ": None
 	}
 
-world_map = []
-start_tile_location = None
-gas_placed = 0
-fartsmell_placed = 0
-trader_placed = 0
 
 def parse_world_dsl():
 	if not is_valid_dsl(world_dsl):
@@ -277,16 +275,17 @@ def parse_world_dsl():
 				global start_tile_location
 				start_tile_location = x,y
 			row.append(tile_type(x,y) if tile_type else None)
-		world_map.append(row)
+		config.world_map.append(row)
 					   
 def tile_at(x,y):
     if x < 0 or y < 0:
         return None
     try:
-        return world_map[y][x]
+        return config.world_map[y][x]
     except IndexError:
         return None
 
+# need to allocate points based on these choices!
 player_types = {
     "a":"disgruntled employee",
     "b":"kool-aid drinker",

@@ -1,4 +1,4 @@
-# need more enemies
+# need more varied enemies
 from random import randint
 
 import items
@@ -119,7 +119,7 @@ class Headmaster(Enemy):
 
     def __init__(self):
         self.name = "Headmaster"
-        self.health = 350
+        self.health = 300
         self.damage = 40
         self.xp = 2000
         super().__init__()

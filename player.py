@@ -4,6 +4,7 @@ from random import randint
 
 import world 
 import items
+import config
 
 init(autoreset=True)
 
@@ -33,7 +34,7 @@ class Player:
         self.map = []
 
         # initialize player's map
-        for level in world.world_map:
+        for level in config.world_map:
             row = [] 
             for cell in level:
                 celltype = cell.__class__.__name__
@@ -220,13 +221,6 @@ class Player:
             msg += " with your fists, doing "+ str(dmg) + " damage! **\n"
             msg += "The " + enemy.name + " has " + str(enemy.health) + " HP left."
             print(Fore.GREEN + Style.BRIGHT + msg) 
-        # this section should never execute
-        #elif self.weapon.condition <= 0:
-        #    dmg = 0
-        #    self.weapon.value = 0
-        #    if not self.weapon.name.endswith("broken"):
-        #        self.weapon.name += " (broken)"
-        #    print("Your stupid weapon is broken! It does nothing!")
         else:
             dmg = randint(0, (self.weapon.damage + self.dmg_bonus))
             enemy.health = max(0, enemy.health - dmg)
@@ -241,7 +235,6 @@ class Player:
                     self.weapon.name += " (broken)"
                     self.weapon.value = 0
                 print("Your stupid weapon broke! It's useless now! Equip a weapon, or rely on your fists!")
-                self.weapons.append(self.weapon)
                 self.weapon = None
         if not enemy.is_alive():
             print("You killed the {}!".format(enemy.name))

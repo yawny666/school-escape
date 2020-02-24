@@ -22,7 +22,7 @@ class Weapon:
 
 class Implement(Weapon):
 
-    verbs = ['smack','whack','bitchslap','slap','doink']
+    verbs = ['smack','whack','pwn','slap','doink']
     def __init__(self,name,description,durability,damage,value):
         super().__init__(name,description,durability,damage,value)
 

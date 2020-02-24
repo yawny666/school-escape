@@ -101,7 +101,7 @@ def update_high_scores(player,score):
         high_scores = []
 
     high_scores.append((score,player))
-    high_scores = sorted(high_scores,reverse = True)[:10]
+    high_scores = sorted(high_scores,reverse = True)[:15]
     with open('hs.txt','wb') as f:
         pickle.dump(high_scores, f)
 
